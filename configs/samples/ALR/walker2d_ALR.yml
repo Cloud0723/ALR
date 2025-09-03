@@ -1,0 +1,39 @@
+seed: 1
+cuda: -1
+env:
+  #env_name: HopperFH-v0
+  env_name: Walker2dRandom-v0
+  T: 1000
+  state_indices: all
+sac:
+  epochs: 705
+  log_step_interval: 5000
+  update_every: 50
+  update_num: 1
+  random_explore_episodes: 10
+  batch_size: 100
+  lr: 1e-3
+  alpha: 0.2
+  automatic_alpha_tuning: false
+  buffer_size: 1000000
+  num_test_episodes: 10
+  hidden_sizes: [64,64,64]
+expert:
+  samples_episode: 64
+irl:
+  training_trajs: 10
+  n_itrs: 200
+  save_interval: 0
+  eval_episodes: 20
+  expert_episodes: 1
+  resample_episodes: 1
+reward:
+  use_bn: false
+  residual: false
+  hid_act: relu
+  hidden_sizes: [64, 64, 64]
+  clamp_magnitude: 10
+  lr: 1e-4
+  weight_decay: 1e-3
+  gradient_step: 1
+  momentum: 0.9
